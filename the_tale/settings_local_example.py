@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 DEBUG = True
+#DEBUG_DB = True
 
 DATABASES = {
     'default': {
