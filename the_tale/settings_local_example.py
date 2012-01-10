@@ -13,3 +13,5 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+#HEROES_USE_ABILITY_CHANCE = 1.1
