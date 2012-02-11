@@ -3,6 +3,7 @@
 from fabric.api import task, run, env, cd, prefix
 
 from fabfile.utils import close_to_503, stop_workers
+from fabfile.backup import backup_project
 
 env.hosts = ['the-tale@the-tale.org']
 
@@ -11,6 +12,7 @@ env.hosts = ['the-tale@the-tale.org']
 def update():
 
     with close_to_503(), stop_workers():
+        backup_project()
         update_project()
     
 
