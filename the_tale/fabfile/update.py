@@ -5,6 +5,8 @@ from fabric.api import task, run, env, cd, prefix
 from fabfile.utils import close_to_503, stop_workers
 from fabfile.backup import backup_project
 
+from meta_config import meta_config
+
 env.hosts = ['the-tale@the-tale.org']
 
 
@@ -23,9 +25,10 @@ def update_project():
         run('pip install --upgrade git+git://github.com/Tiendil/pynames.git#egg=Pynames')
         run('pip install --upgrade git+ssh://git@github.com/Tiendil/the-tale.git#egg=TheTale')
 
-    run('ln -s ~/env/lib/python2.7/site-packages/the_tale /home/the-tale/project')
+    run('ln -s /home/the-tale/env/lib/python2.7/site-packages/the_tale /home/the-tale/project')
     run('ln -s /home/the-tale/conf/settings_local.py  /home/the-tale/project/settings_local.py')
-    run('ln -s ~/env/lib/python2.7/site-packages/django/contrib/admin/media /home/the-tale/project/static/admin')
+    run('ln -s /home/the-tale/env/lib/python2.7/site-packages/django/contrib/admin/media /home/the-tale/project/static/admin')
+    run('ln -s /home/the-tale/env/lib/python2.7/site-packages/the_tale/static /home/the-tale/static/%s' % meta_config.static_data_version)
 
     with cd('/home/the-tale/project'):
 
