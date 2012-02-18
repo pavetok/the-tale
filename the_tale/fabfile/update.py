@@ -38,3 +38,4 @@ def update_project():
             run('./manage.py syncdb')
             run('./manage.py migrate')
             run('./manage.py portal_postupdate_operations')
+            run('./manage.py map_update_map')
