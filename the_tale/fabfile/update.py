@@ -37,3 +37,4 @@ def update_project():
         with prefix('. /home/the-tale/env/bin/activate'):
             run('./manage.py syncdb')
             run('./manage.py migrate')
+            run('./manage.py portal_postupdate_operations')
