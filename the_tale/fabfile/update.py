@@ -16,6 +16,8 @@ def update():
     with close_to_503(), stop_workers():
         backup_project()
         update_project()
+
+    run('killall apache2')
     
 
 def update_project():
