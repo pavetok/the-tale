@@ -3,7 +3,8 @@ import sys
 
 TESTS_RUNNING = 'test' in sys.argv or 'testserver' in sys.argv
 
-DEBUG = True
+DEBUG = 'runserver' in sys.argv
+
 # DEBUG_DATABASE_USAGE = True
 # DEBUG_DATABASE_USAGE_OUTPUT_DIR = '/home/tie/tmp/db/'
 
