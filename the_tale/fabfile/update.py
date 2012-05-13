@@ -1,14 +1,11 @@
 # coding: utf-8
 
-from fabric.api import task, run, env, cd, prefix
+from fabric.api import task, run, cd, prefix
 
 from fabfile.utils import close_to_503, stop_workers
 from fabfile.backup import backup_project
 
 from meta_config import meta_config
-
-env.hosts = ['the-tale@the-tale.org']
-
 
 @task
 def update():
@@ -18,10 +15,10 @@ def update():
         update_project()
 
     run('killall apache2')
-    
+
 
 def update_project():
-    
+
     with prefix('. /home/the-tale/env/bin/activate'):
         run('pip install --upgrade "git+git://github.com/Tiendil/dext.git#egg=Dext" -r https://raw.github.com/Tiendil/dext/master/requirements.txt')
         run('pip install --upgrade git+git://github.com/Tiendil/pynames.git#egg=Pynames')
