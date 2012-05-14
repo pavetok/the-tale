@@ -20,7 +20,9 @@ def update():
 def update_project():
 
     with prefix('. /home/the-tale/env/bin/activate'):
-        run('pip install --upgrade "git+git://github.com/Tiendil/dext.git#egg=Dext" -r https://raw.github.com/Tiendil/dext/master/requirements.txt')
+        run('pip install --upgrade "git+git://github.com/Tiendil/dext.git#egg=Dext"')
+        run('pip install -r https://raw.github.com/Tiendil/dext/master/requirements.txt')
+
         run('pip install --upgrade git+git://github.com/Tiendil/pynames.git#egg=Pynames')
         run('pip install --upgrade git+ssh://git@github.com/Tiendil/the-tale.git#egg=TheTale')
 
