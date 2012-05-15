@@ -31,7 +31,6 @@ def environment_setup():
     sync_postfix()
 
     with cd('/home/the-tale'):
-        sync_virtualenv('./env')
 
         sync_dir('./dcont', 'the-tale', '755')
         sync_dir('./conf', 'the-tale', '750')
@@ -48,6 +47,7 @@ def environment_setup():
         sync_template_file('./project/conf/settings_local.py', './conf/settings_local.py', owner='the-tale', mode='640')
 
         sync_pip_package('virtualenv')
+        sync_virtualenv('./env')
 
         with context_managers.prefix('. ./env/bin/activate'):
             sync_pip_package('pip', '1.0.2') # TODO: remove when pip > 1.1 become available, see: https://github.com/pypa/pip/issues/486
