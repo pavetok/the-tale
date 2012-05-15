@@ -29,16 +29,14 @@ def environment_setup():
     sync_postgres()
     sync_rabbitmq()
     sync_postfix()
-    sync_pip_package('virtualenv')
-    sync_pip_package('pip', '1.0.2') # TODO: remove when pip > 1.1 become available, see: https://github.com/pypa/pip/issues/486
 
     with cd('/home/the-tale'):
         sync_virtualenv('./env')
 
-        sync_dir('./dcont', 'the-tale', '750') # 777
+        sync_dir('./dcont', 'the-tale', '755')
         sync_dir('./conf', 'the-tale', '750')
         sync_dir('./logs', 'the-tale', '750')
-        sync_dir('./static', 'the-tale', '750')
+        sync_dir('./static', 'the-tale', '755')
         sync_dir('./.ssh', 'the-tale', '700')
 
         sync_template_file('./project/.ssh/authorized_keys', './.ssh/authorized_keys', owner='the-tale', mode='600')
@@ -49,7 +47,11 @@ def environment_setup():
         sync_template_file('./project/conf/wsgi.py', './conf/wsgi.py', owner='the-tale', mode='640')
         sync_template_file('./project/conf/settings_local.py', './conf/settings_local.py', owner='the-tale', mode='640')
 
+        sync_pip_package('virtualenv')
+
         with context_managers.prefix('. ./env/bin/activate'):
+            sync_pip_package('pip', '1.0.2') # TODO: remove when pip > 1.1 become available, see: https://github.com/pypa/pip/issues/486
+
             for pip_package_name in ['kombu', 'psycopg2', 'south', 'postmarkup', 'markdown', 'pymorphy', 'xlrd', 'mock']:
                 sync_pip_package(pip_package_name)
 

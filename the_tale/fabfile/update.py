@@ -30,7 +30,7 @@ def update_project():
 
     run('ln -s /home/the-tale/env/lib/python2.7/site-packages/the_tale /home/the-tale/project')
     run('ln -s /home/the-tale/conf/settings_local.py  /home/the-tale/project/settings_local.py')
-    run('ln -s /home/the-tale/env/lib/python2.7/site-packages/django/contrib/admin/media /home/the-tale/project/static/admin')
+    run('ln -s /home/the-tale/env/lib/python2.7/site-packages/django/contrib/admin/static/admin/ /home/the-tale/project/static/admin')
     run('ln -s /home/the-tale/env/lib/python2.7/site-packages/the_tale/static /home/the-tale/static/%s' % meta_config.static_data_version)
 
     with cd('/home/the-tale/project'):
