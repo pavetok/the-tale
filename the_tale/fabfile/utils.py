@@ -1,6 +1,8 @@
 # coding: utf-8
 from contextlib import contextmanager
 
+from dext.utils import pid
+
 from fabric.api import run, cd, prefix, sudo
 from fabric import context_managers
 
@@ -31,6 +33,11 @@ def stop_workers():
 
     if not is_path_exists('/home/the-tale/project'):
         print 'skeep "stop workers" action since projects does not exists'
+        yield
+        return
+
+    if not pid.check('game_supervisor'):
+        print 'workers has been already stopped, so they should be started manually'
         yield
         return
 
