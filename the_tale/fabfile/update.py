@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from fabric.api import task, run, cd, prefix
+from fabric import context_managers
 
 from fabfile.utils import close_to_503, stop_workers
 from fabfile.backup import backup_project
@@ -14,7 +15,8 @@ def update():
         backup_project()
         update_project()
 
-    run('killall apache2')
+    with context_managers.settings(context_managers.hide('warnings', 'running'), warn_only=True):
+        run('killall apache2')
 
 
 def update_project():
