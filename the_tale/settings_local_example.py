@@ -8,6 +8,9 @@ DEBUG = 'runserver' in sys.argv
 # DEBUG_DATABASE_USAGE = True
 # DEBUG_DATABASE_USAGE_OUTPUT_DIR = '/home/tie/tmp/db/'
 
+GAME_ENABLE_WORKER_HIGHLEVEL = False
+GAME_ENABLE_WORKER_TURNS_LOOP = False
+
 
 DATABASES = {
     'default': {
