@@ -1,8 +1,6 @@
 # coding: utf-8
 from contextlib import contextmanager
 
-from dext.utils import pid
-
 from fabric.api import run, cd, prefix, sudo
 from fabric import context_managers
 
@@ -36,7 +34,7 @@ def stop_workers():
         yield
         return
 
-    if not pid.check('game_supervisor'):
+    if not is_path_exists('/home/the-tale/.the-tale/game_supervisor.pid'):
         print 'workers has been already stopped, so they should be started manually'
         yield
         return
@@ -48,4 +46,8 @@ def stop_workers():
     yield
 
     with cd('/home/the-tale/project'):
-        run('./manage.py game_workers -c start')
+        with prefix('. /home/the-tale/env/bin/activate'):
+            run('nohup ./manage.py game_workers -c start 2>&1 1>/dev/null </dev/null')
+
+    import time
+    time.sleep(10)
