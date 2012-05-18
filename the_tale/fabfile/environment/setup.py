@@ -13,10 +13,8 @@ TEMPLATES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templa
 
 @task
 def environment_setup():
-    sync_user('the-tale')
 
     sync_package_manager()
-
     for package_name in ['python-pip',
                          'git',
                          'emacs',
@@ -25,10 +23,9 @@ def environment_setup():
                          'psmisc']:
         sync_package(package_name)
 
-    sync_apache2()
-    sync_postgres()
-    sync_rabbitmq()
-    sync_postfix()
+    sync_postgres() #must be before psycopg2 install
+
+    sync_user('the-tale')
 
     with cd('/home/the-tale'):
 
@@ -50,10 +47,16 @@ def environment_setup():
         sync_virtualenv('./env')
 
         with context_managers.prefix('. ./env/bin/activate'):
-            sync_pip_package('pip', '1.0.2') # TODO: remove when pip > 1.1 become available, see: https://github.com/pypa/pip/issues/486
+            sync_pip_package('pip', '1.0.2', user='the-tale') # TODO: remove when pip > 1.1 become available, see: https://github.com/pypa/pip/issues/486
 
             for pip_package_name in ['kombu', 'psycopg2', 'south', 'postmarkup', 'markdown', 'pymorphy', 'xlrd', 'mock']:
-                sync_pip_package(pip_package_name)
+                sync_pip_package(pip_package_name, user='the-tale')
+
+    sync_apache2() # require log directories from project
+    sync_rabbitmq()
+    sync_postfix()
+    sync_collectd()
+
 
 
 def sync_user(username, groups=[]):
@@ -124,11 +127,17 @@ def sync_package(package_name):
     print colors.green(u'package "%(package_name)s" synced' % {'package_name': package_name})
 
 
-def sync_pip_package(package_name, version=None):
+def sync_pip_package(package_name, version=None, user=None):
     if version:
         package_name = '%s==%s' % (package_name, version)
 
-    sudo('pip install "%(package_name)s"' % {'package_name': package_name})
+    cmd = 'pip install "%(package_name)s"' % {'package_name': package_name}
+
+    if user is None:
+        sudo(cmd)
+    else:
+        sudo(cmd, user=user)
+
     print colors.green(u'pip package "%(package_name)s" synced' % {'package_name': package_name})
 
 def sync_virtualenv(venv_path):
@@ -164,7 +173,7 @@ def sync_apache2():
     sync_user('www-data', groups=['the-tale'])
 
     sudo('a2enmod rewrite')
-    sudo('service apache2 reload')
+    sudo('service apache2 restart')
 
     print colors.green(u'apache2 synced')
 
@@ -206,3 +215,23 @@ def sync_rabbitmq():
         sudo('rabbitmqctl  set_permissions -p "/the-tale" "the-tale" ".*" ".*" ".*"')
 
     print colors.green(u'rabbitmq synced')
+
+
+def sync_collectd():
+    sync_package('collectd')
+
+    # install librate plugin
+    sync_package('make')
+    with cd('/tmp'):
+        sudo('git clone git://github.com/librato/collectd-librato.git')
+
+        with cd('collectd-librato'):
+            sudo('make install')
+
+        sudo('rm -rf ./collectd-librato')
+
+    sync_template_file('./collectd/collectd.conf', '/etc/collectd/collectd.conf', owner='root', mode='644')
+
+    sudo('service collectd restart')
+
+    print colors.green(u'collectd synced')
