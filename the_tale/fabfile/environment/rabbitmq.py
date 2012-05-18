@@ -11,7 +11,7 @@ class RabbitMQ(Service):
 
     PACKAGES = ('rabbitmq-server', )
 
-    def __init__(self, project=None):
+    def __init__(self, project):
         super(RabbitMQ, self).__init__()
 
         self.projects = set() if project is None else set((project,))

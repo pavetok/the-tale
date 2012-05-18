@@ -1,4 +1,5 @@
 # coding: utf-8
+import copy
 import itertools
 
 from fabric.api import sudo, cd
@@ -18,7 +19,7 @@ class Apache(Service):
     def __init__(self, project=None, modes=()):
         super(Apache, self).__init__()
 
-        self._users = [User(APACHE_USER, groups=[project])]
+        self._users = {APACHE_USER: User(APACHE_USER, groups=[project]) }
 
         self.modes = set(modes)
         self.projects = set() if project is None else set((project,))
@@ -27,6 +28,17 @@ class Apache(Service):
         super(Apache, self).merge(apache)
         self.projects += apache.projects
         self.modes += apache.modes
+
+        users = copy.deepcopy(self._users)
+
+        for user in apache._users.values:
+            if user.name not in users:
+                users[user.name] = copy.deepcopy(user)
+            else:
+                users[user.name].merge(user)
+
+        self._users = users
+
 
 
     def setup(self):

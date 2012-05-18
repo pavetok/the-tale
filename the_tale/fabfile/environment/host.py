@@ -23,9 +23,9 @@ class Host(object):
 
     def sync(self):
         self.sync_projects()
+        self.sync_services() # before users (see apache)
         self.sync_users()
-        self.sync_services()
-        self.sync_packages()
+        self.sync_packages() # after all
 
     def sync_projects(self):
         projects = dict( (project.name, project) for project in copy.deepcopy(self._projects))
@@ -44,7 +44,7 @@ class Host(object):
                     users[user.name].merge(user)
 
         for service in self.services.values():
-            for user in service._users:
+            for user in service._users.values():
                 if user.name not in users:
                     users[user.name] = copy.deepcopy(user)
                 else:
@@ -104,6 +104,7 @@ class Host(object):
         print colors.green(u'setupe users')
 
         for user in self.users.values():
+            print colors.green(u'setup %s' % user.name)
             user.setup()
 
         print colors.green(u'users setuped')
@@ -111,6 +112,7 @@ class Host(object):
         print colors.green(u'setup projects')
 
         for project in self.projects.values():
+            print colors.green(u'setup %s' % project.name)
             project.setup()
 
         print colors.green(u'projects setuped')
@@ -118,6 +120,7 @@ class Host(object):
         print colors.green(u'setupe services')
 
         for service in self.services.values():
+            print colors.green(u'setup %s' % service.name)
             service.setup()
 
         print colors.green(u'services setuped')

@@ -6,6 +6,7 @@ class Service(object):
 
     def __init__(self):
         self.name = self.__class__.__name__.lower()
+        self._users = {}
 
     @property
     def required_packages(self): return set(self.PACKAGES)
