@@ -42,12 +42,14 @@ def stop_workers():
     with cd('/home/the-tale/project'):
         with prefix('. /home/the-tale/env/bin/activate'):
             run('./manage.py game_workers -c stop')
+            run('./manage.py portal_workers -c stop')
 
     yield
 
     with cd('/home/the-tale/project'):
         with prefix('. /home/the-tale/env/bin/activate'):
             run('nohup ./manage.py game_workers -c start 2>&1 1>/dev/null </dev/null')
+            run('nohup ./manage.py portal_workers -c start 2>&1 1>/dev/null </dev/null')
 
     import time
     time.sleep(10)
