@@ -19,4 +19,6 @@ DCONT_DIR = "/home/the-tale/dcont/"
 
 SERVER_EMAIL = 'game@the-tale.org'
 ADMINS = (('Tiendil', 'a.eletsky@gmail.com'), )
+
 EMAIL_HOST = 'localhost'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
