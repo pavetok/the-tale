@@ -40,5 +40,3 @@ if TESTS_RUNNING:
             'PORT': '',
             }
         }
-
-NEWS_FORUM_CATEGORY_SLUG = 'c3s1'
