@@ -2,7 +2,7 @@ NameVirtualHost the-tale.org:80
 
 <virtualhost the-tale.org:80>
   ServerName the-tale.org
-  ServerAdmin a.eletsky@gmail.com
+  ServerAdmin admin@the-tale.org
 
   DocumentRoot /home/the-tale/
   Alias /static/ /home/the-tale/static/
