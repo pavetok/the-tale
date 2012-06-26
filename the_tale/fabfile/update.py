@@ -27,7 +27,7 @@ def update_project():
 
         run('pip install --upgrade git+git://github.com/Tiendil/pynames.git#egg=Pynames')
         run('pip install --upgrade git+git://github.com/Tiendil/textgen.git#egg=Textgen')
-        run('pip install --upgrade git+ssh://git@github.com/Tiendil/the-tale.git#egg=TheTale')
+        run('pip install --upgrade git+ssh://git@github.com/Tiendil/the-tale.git@v0.1.0#egg=TheTale')
 
     run('ln -s /home/the-tale/env/lib/python2.7/site-packages/the_tale /home/the-tale/project')
     run('ln -s /home/the-tale/conf/settings_local.py  /home/the-tale/project/settings_local.py')
