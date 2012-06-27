@@ -14,7 +14,7 @@ from .python import Python
 
 project_the_tale =  Project('the-tale',
                             users=(User('the-tale', ssh=SSH(keys=('id_rsa',), authorized_keys=True)),),
-                            packages=('git', ),
+                            packages=('git', 'psmisc'),
                             services=(Apache('the-tale', modes=('rewrite',)),
                                       Postgres('the-tale'),
                                       RabbitMQ('the-tale'),
