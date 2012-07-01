@@ -25,7 +25,6 @@ DATABASES = {
     }
 }
 
-
 if TESTS_RUNNING:
     SOUTH_TESTS_MIGRATE=False
     SKIP_SOUTH_TESTS=True
