@@ -30,7 +30,8 @@ class RabbitMQ(Service):
             if add_user_result.return_code:
                 print colors.yellow('rabbitmq user has been already created')
 
-            add_vhost_result = sudo('rabbitmqctl add_vhost "/%(project)s"' % {'project': project})
+            with context_managers.settings(context_managers.hide('warnings', 'running'), warn_only=True):
+                add_vhost_result = sudo('rabbitmqctl add_vhost "/%(project)s"' % {'project': project})
 
             if add_vhost_result.return_code:
                 print colors.yellow('rabbitmq vhost has been already created')

@@ -21,7 +21,7 @@ project_the_tale =  Project('the-tale',
                                       Postfix(),
                                       Collectd(connect_to_librato=True),
                                       Python('the-tale',
-                                             packages=('kombu', 'psycopg2', 'south', 'postmarkup', 'markdown', 'pymorphy', 'xlrd', 'mock'))))
+                                             packages=('kombu', 'psycopg2', 'south', 'postmarkup', 'markdown', 'pymorphy', 'xlrd', 'mock', 'newrelic'))))
 
 
 HOST = Host('vps',

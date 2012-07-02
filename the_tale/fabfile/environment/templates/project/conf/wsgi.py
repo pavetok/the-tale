@@ -14,10 +14,8 @@ import django.core.handlers.wsgi
 sys.path.append('/home/the-tale/project')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-#import newrelic.agent
-
-#newrelic.agent.initialize('/home/the-tale/conf/newrelic.ini')
+import newrelic.agent
+newrelic.agent.initialize('/home/the-tale/conf/newrelic.ini')
 
 application = django.core.handlers.wsgi.WSGIHandler()
-
-#application = newrelic.agent.wsgi_application()(application)
+application = newrelic.agent.wsgi_application()(application)

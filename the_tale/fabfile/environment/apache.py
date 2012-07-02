@@ -55,6 +55,7 @@ class Apache(Service):
             with cd('/home/%(project)s' % {'project': project}):
                 sync_template_file('./project/conf/503.html', './conf/503.html', owner='the-tale', mode='640')
                 sync_template_file('./project/conf/wsgi.py', './conf/wsgi.py', owner='the-tale', mode='640')
+                sync_template_file('./project/conf/newrelic.ini', './conf/newrelic.ini', owner='the-tale', mode='640')
                 sync_template_file('./project/conf/settings_local.py', './conf/settings_local.py', owner='the-tale', mode='640')
 
 
