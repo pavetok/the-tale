@@ -96,7 +96,10 @@ class Host(object):
             else:
                 packages.append(package)
 
-        with context_managers.prefix(' && '.join(prefix)):
+        if prefix:
+            with context_managers.prefix(' && '.join(prefix)):
+                sudo('aptitude install -y %s' % ' '.join(packages) )
+        else:
             sudo('aptitude install -y %s' % ' '.join(packages) )
 
         print colors.green(u'packages setuped')
