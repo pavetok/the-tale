@@ -9,7 +9,7 @@ DEBUG = 'runserver' in sys.argv
 # DEBUG_DATABASE_USAGE_OUTPUT_DIR = '/home/tie/tmp/db/'
 
 GAME_ENABLE_WORKER_HIGHLEVEL = True
-GAME_ENABLE_WORKER_TURNS_LOOP = True
+GAME_ENABLE_WORKER_TURNS_LOOP = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
