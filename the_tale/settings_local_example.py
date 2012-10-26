@@ -10,6 +10,7 @@ DEBUG = 'runserver' in sys.argv
 
 GAME_ENABLE_WORKER_HIGHLEVEL = True
 GAME_ENABLE_WORKER_TURNS_LOOP = False
+GAME_ENABLE_WORKER_MIGHT_CALCULATOR=True
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
