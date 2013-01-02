@@ -17,6 +17,8 @@ GAME_ENABLE_PVP = True
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
 
+PVP_BALANCING_WITHOUT_LEVELS = True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -31,6 +33,7 @@ DATABASES = {
 if TESTS_RUNNING:
     SOUTH_TESTS_MIGRATE=False
     SKIP_SOUTH_TESTS=True
+    PVP_BALANCING_WITHOUT_LEVELS = False
 
     DATABASES = {
         'default': {
