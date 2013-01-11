@@ -17,7 +17,7 @@ GAME_ENABLE_PVP = True
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
 
-PVP_BALANCING_WITHOUT_LEVELS = True
+PVP_BALANCING_WITHOUT_LEVELS = False
 
 DATABASES = {
     'default': {
