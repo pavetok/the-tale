@@ -19,6 +19,8 @@ EMAIL_FILE_PATH = '/tmp/emails'
 
 PVP_BALANCING_WITHOUT_LEVELS = False
 
+SITE_URL = 'localhost:8000'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
