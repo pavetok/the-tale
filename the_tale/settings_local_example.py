@@ -21,6 +21,9 @@ PVP_BALANCING_WITHOUT_LEVELS = True
 
 SITE_URL = 'localhost:8000'
 
+GA_CODE = None
+ADDTHIS = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
