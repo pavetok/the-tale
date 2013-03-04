@@ -50,3 +50,10 @@ if TESTS_RUNNING:
             'PORT': '',
             }
         }
+
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+            }
+        }
