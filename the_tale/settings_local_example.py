@@ -51,7 +51,6 @@ if TESTS_RUNNING:
             }
         }
 
-
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
