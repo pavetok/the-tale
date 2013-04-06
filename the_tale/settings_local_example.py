@@ -14,6 +14,8 @@ GAME_ENABLE_WORKER_MIGHT_CALCULATOR = False
 GAME_ENABLE_WORKER_LONG_COMMANDS = False
 GAME_ENABLE_PVP = True
 
+POST_SERVICE_ENABLE_MESSAGE_SENDER = False
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
 
