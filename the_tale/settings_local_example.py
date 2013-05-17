@@ -16,6 +16,8 @@ GAME_ENABLE_PVP = True
 
 POST_SERVICE_ENABLE_MESSAGE_SENDER = False
 
+GAME_ENABLE_DATA_REFRECH = False
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
 
