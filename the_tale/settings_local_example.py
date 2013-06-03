@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 import sys
 
 TESTS_RUNNING = 'test' in sys.argv or 'testserver' in sys.argv
@@ -19,6 +19,7 @@ POST_SERVICE_ENABLE_MESSAGE_SENDER = False
 
 PORTAL_ENABLE_WORKER_LONG_COMMANDS = False
 
+PAYMENTS_ENABLE_DENGIONLINE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/emails'
