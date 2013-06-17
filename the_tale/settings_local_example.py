@@ -42,6 +42,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
 if TESTS_RUNNING:
     SOUTH_TESTS_MIGRATE = False
     SKIP_SOUTH_TESTS = True
