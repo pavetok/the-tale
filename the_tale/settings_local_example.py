@@ -31,7 +31,7 @@ SITE_URL = 'localhost:8000'
 GA_CODE = None
 ADDTHIS = False
 
-USE_NEWRELIC = False
+NEWRELIC_ENABLED = False
 
 DATABASES = {
     'default': {
