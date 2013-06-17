@@ -31,6 +31,8 @@ SITE_URL = 'localhost:8000'
 GA_CODE = None
 ADDTHIS = False
 
+USE_NEWRELIC = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
