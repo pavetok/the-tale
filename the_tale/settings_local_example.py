@@ -73,3 +73,8 @@ if TESTS_RUNNING:
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
             }
         }
+
+
+XSOLLA_BASE_LINK= u'https://secure.xsolla.com/paystation/',
+XSOLLA_THEME=34
+XSOLLA_PROJECT=10519
