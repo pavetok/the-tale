@@ -5,9 +5,6 @@ TESTS_RUNNING = 'test' in sys.argv or 'testserver' in sys.argv
 
 DEBUG = 'runserver' in sys.argv
 
-# DEBUG_DATABASE_USAGE = True
-# DEBUG_DATABASE_USAGE_OUTPUT_DIR = '/home/tie/tmp/db/'
-
 GAME_ENABLE_WORKER_HIGHLEVEL = True
 GAME_ENABLE_WORKER_TURNS_LOOP = False
 GAME_ENABLE_PVP = True
@@ -33,6 +30,8 @@ GA_CODE = None
 ADDTHIS = False
 
 NEWRELIC_ENABLED = False
+
+CDNS_ENABLED = False
 
 DATABASES = {
     'default': {
