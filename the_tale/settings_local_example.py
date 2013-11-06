@@ -28,6 +28,8 @@ SITE_URL = 'localhost:8000'
 
 GA_CODE = None
 ADDTHIS = False
+MAIL_RU = False
+RAMBLER = False
 
 NEWRELIC_ENABLED = False
 
