@@ -35,6 +35,8 @@ NEWRELIC_ENABLED = False
 
 CDNS_ENABLED = False
 
+CONN_MAX_AGE = 0
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
