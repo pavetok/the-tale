@@ -35,8 +35,6 @@ NEWRELIC_ENABLED = False
 
 CDNS_ENABLED = False
 
-CONN_MAX_AGE = 0
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -45,6 +43,7 @@ DATABASES = {
         'PASSWORD': 'the-tale',
         'HOST': '',
         'PORT': '',
+        'CONN_MAX_AGE': 0
     }
 }
 
@@ -68,6 +67,7 @@ if TESTS_RUNNING:
             'PASSWORD': '',
             'HOST': '',
             'PORT': '',
+            'CONN_MAX_AGE': 0
             }
         }
 
