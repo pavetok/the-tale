@@ -6,10 +6,10 @@ TESTS_RUNNING = 'test' in sys.argv or 'testserver' in sys.argv
 DEBUG = 'runserver' in sys.argv
 
 GAME_ENABLE_WORKER_HIGHLEVEL = True
-GAME_ENABLE_WORKER_TURNS_LOOP = True#False
+GAME_ENABLE_WORKER_TURNS_LOOP = False
 GAME_ENABLE_PVP = True
 
-GAME_ENABLE_DATA_REFRESH = True #False
+GAME_ENABLE_DATA_REFRESH = False
 
 POST_SERVICE_ENABLE_MESSAGE_SENDER = False
 
