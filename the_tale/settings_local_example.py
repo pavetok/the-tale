@@ -5,7 +5,7 @@ TESTS_RUNNING = 'test' in sys.argv or 'testserver' in sys.argv
 
 DEBUG = 'runserver' in sys.argv
 
-GAME_ENABLE_WORKER_HIGHLEVEL = False
+GAME_ENABLE_WORKER_HIGHLEVEL = True
 GAME_ENABLE_WORKER_TURNS_LOOP = False
 GAME_ENABLE_PVP = True
 
@@ -43,13 +43,6 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
         'CONN_MAX_AGE': 0
-    }
-}
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
     }
 }
 
