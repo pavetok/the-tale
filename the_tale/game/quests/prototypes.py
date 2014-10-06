@@ -33,6 +33,11 @@ from the_tale.game.quests import uids
 
 E = 0.001
 
+
+from django.utils.log import getLogger
+logger = getLogger('the-tale.game.quest_persons_powers')
+
+
 class QuestInfo(object):
     __slots__ = ('type', 'uid', 'name', 'action', 'choice', 'choice_alternatives', 'experience', 'power', 'experience_bonus', 'power_bonus', 'actors', 'used_markers')
 
@@ -394,6 +399,8 @@ class QuestPrototype(object):
             return 0
 
         person.cmd_change_power(power, positive_bonus, negative_bonus)
+
+        logger.info(u'hero: %d, person: %d, power: %f positive_bonus: %f, negative_bonus: %f' % (hero.id, person.id, power, positive_bonus, negative_bonus))
 
         return power
 
