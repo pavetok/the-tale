@@ -68,6 +68,10 @@ if TESTS_RUNNING:
             }
         }
 
+    PASSWORD_HASHERS = (
+        'django.contrib.auth.hashers.MD5PasswordHasher',
+    )
+
 
 PAYMENTS_XSOLLA_ENABLED = True
 PAYMENTS_XSOLLA_MARKETPLACE = 'paydesk'
