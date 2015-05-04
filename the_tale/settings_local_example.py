@@ -52,13 +52,7 @@ if TESTS_RUNNING:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'the_tale.sqlite',
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': '',
-            'PORT': '',
-            'CONN_MAX_AGE': 0
+            'ENGINE': 'django.db.backends.sqlite3'
             }
         }
 
